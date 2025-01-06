@@ -1,0 +1,11 @@
+<script src="{{ asset('build/app/shop/quantity-alert.js') }}"></script>
+{% set product = hookable_metadata.context.product %}
+<div class="mb-4">
+    {{ form_row(hookable_metadata.context.form.cartItem.quantity, {'attr':
+        {
+            'min': product.batchSize,
+            'step': product.batchSize,
+            'data-batch-size': product.batchSize
+        }
+    }) }}
+</div>
