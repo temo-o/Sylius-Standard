@@ -12,6 +12,21 @@ use Sylius\Component\Product\Model\ProductTranslationInterface;
 #[ORM\Table(name: 'sylius_product')]
 class Product extends BaseProduct
 {
+    #[ORM\Column(name:'batch_size', type: 'integer', options: ['default' => 14])]
+    protected int $batchSize;
+
+    public function getBatchSize(): int
+    {
+        return $this->batchSize;
+    }
+
+    public function setBatchSize(int $batchSize): self
+    {
+        $this->batchSize = $batchSize;
+
+        return $this;
+    }
+
     protected function createTranslation(): ProductTranslationInterface
     {
         return new ProductTranslation();
